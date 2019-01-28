@@ -28,16 +28,16 @@
 
 SRCS := $(shell ls src/*.f90)
 OBJS := $(SRCS:src/%.f90=obj/%.o)
-HDF5 := /usr/local/hdf5
-FORTRANLIB := -I$(HDF5)/include $(HDF5)/lib/libhdf5_fortran.a
-LIBSHDF := $(FORTRANLIB) $(HDF5)/lib/libhdf5.a
-LIBZ :=/usr/local/lib/libz.a
+HDF5 := /usr/lib/x86_64-linux-gnu
+FORTRANLIB := -I$(HDF5)/include #$(HDF5)/lib/libhdf5_serial_fortran.a
+#LIBSHDF := $(FORTRANLIB) $(HDF5)/lib/libhdf5.a
+LIBZ :=/usr/lib/x86_64-linux-gnu/libz.a
 
 COMPILER := gfortran -fbounds-check -O2 -ffixed-line-length-none -ffree-line-length-none -Wunused -lm
 
 
 bin/NHDS: $(OBJS)
-	$(COMPILER)  $(OBJS) -o $@ $(LIB64)  $(LIBSHDF) $(LIBZ)
+	$(COMPILER)  $(OBJS) -o $@ $(LIB64) $(LIBZ) #$(LIBSHDF)
 
 
 obj/%.o:src/%.f90

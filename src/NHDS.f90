@@ -79,7 +79,7 @@ if (output_mom) then
 endif
 if (output_EB) then
    open(unit=12,file='EB_'//trim(filename)//'.dat',status='replace',action='write')
-   write (14,*) '# kk, theta, Re(Ex), Im(Ex), Re(Ey), Im(Ey), Re(Ez), Im(Ez), Re(Bx), Im(Bx), Re(By), Im(By), Re(Bz), Im(Bz)'
+   write (12,*) '# kk, theta, Re(Ex), Im(Ex), Re(Ey), Im(Ey), Re(Ez), Im(Ez), Re(Bx), Im(Bx), Re(By), Im(By), Re(Bz), Im(Bz)'
 endif
 
 if (kth_file) then
